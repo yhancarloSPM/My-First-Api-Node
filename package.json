@@ -8,7 +8,7 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yhancarlos Perez",
   "license": "ISC",
   "dependencies": {
     "body-parse": "^0.1.0",
