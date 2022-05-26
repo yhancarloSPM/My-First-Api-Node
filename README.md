@@ -40,7 +40,12 @@
 ![UPDATE BY ID REQUEST](images/delete_user_request.png)
 ![UPDATE BY ID RESPONSE](images/delete_user_response.png)
 
-### Link to postman methods documentation :point_down:
+### Link of the documentation methods in postman :point_down:
 * [Postman Documentation Methods](https://documenter.getpostman.com/view/17706643/Uz5ArJLE)
+
+### Link to heroku url :point_down:
+* <https://my-user-node-api.herokuapp.com/api/users>
+
+
 
 # STILL WORKING ON IT.
