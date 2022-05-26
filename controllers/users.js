@@ -1,7 +1,7 @@
 const User = require("../models/users");
 const response = require("../utils/response");
 const { isValidObjectId } = require("../utils/validateObjectId");
-const { generaHash, compareHash } = require("../utils/hash");
+const { generateHash, compareHash } = require("../utils/hash");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -63,11 +63,20 @@ const getUserById = async (req, res) => {
 
 const registerUser = async (req, res) => {
   const { name, lastname, email, password } = req.body;
+
+  const hasheddPassword = await generateHash(password);
+  
+  const user = await User.findOne({ email: req.body.email });
+  if (user) {
+    res.status(404).json({ WARNING: "EMAIL_ALREADY_EXISTS" });
+    return;
+  }
+
   const newUser = new User({
-    name,
-    lastname,
-    email,
-    password,
+    name: name,
+    lastname: lastname,
+    email: email,
+    password: hasheddPassword,
   });
 
   try {
