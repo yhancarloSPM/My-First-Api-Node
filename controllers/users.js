@@ -81,7 +81,7 @@ const registerUser = async (req, res) => {
 
   try {
     await newUser.save();
-    response.success(req, res, 201, "USER_ CREATED_ SUCCESSFULL");
+    response.success(req, res, 201, "USER_CREATED_SUCCESSFULL");
   } catch (error) {
     response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
