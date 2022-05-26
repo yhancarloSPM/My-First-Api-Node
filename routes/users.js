@@ -7,7 +7,7 @@ const { loginUser, getAllUsers, registerUser, getUserById,
 router.post('/login', loginUser)
 router.get('/', getAllUsers)
 router.get('/:id', getUserById)
-router.post('/', userValidate,  registerUser)
+router.post('/register', userValidate,  registerUser)
 router.put('/:id', userValidate, updateUserById)
 router.delete('/:id', deleteUserById)
 router.post('/search', getUserByName)

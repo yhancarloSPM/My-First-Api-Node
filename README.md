@@ -1,4 +1,6 @@
-# NODE API USERS 
+# NODE API USERS
+
+<!--Badges Section ---  you can modify then ot got to shields.io to get then -->
 
 ![API](https://img.shields.io/badge/api-v1.0.0-orange)
 ![EXPRESS](https://img.shields.io/badge/express-v4.18.1-yellow)
@@ -10,16 +12,35 @@
 
 #### This is an example node api, in it you can make use of the http methods shown below :point_down:
 
-### POST METHOD
-![POST](images/post_user.png)
+### REGISTER METHOD
+![REGISTER REQUEST](images/register_request.png)
+![REGISTER RESPONSE](images/register_response.png)
 
-### GET METHODS
-![GET](images/get_allUser_userById.png)
+### LOGIN METHOD
+![LOGIN REQUEST](images/login_request.png)
+![LOGIN RESPONSE](images/login_response.png)
 
-### UPDATE METHOD
-![PUT](images/put_user.png)
+### GET ALL METHOD
+![GET ALL REQUEST](images/get_all_users_request.png)
+![GET ALL RESPONSE](images/get_all_users_response.png)
 
-### DELETE METHOD
-![DELETE](images/delete_anUser.png)
+### GET BY ID METHOD
+![GET BY ID REQUEST](images/get_user_by_id_request.png)
+![GET BY ID RESPONSE](images/get_user_by_id_response.png)
+
+### GET BY NAME METHOD
+![GET BY NAME REQUEST](images/get_user_by_name_request.png)
+![GET BY NAME RESPONSE](images/get_user_by_name_response.png)
+
+### UPDATE BY ID METHOD
+![UPDATE BY ID REQUEST](images/update_user_request.png)
+![UPDATE BY ID RESPONSE](images/update_user_response.png)
+
+### DELETE BY ID METHOD
+![UPDATE BY ID REQUEST](images/delete_user_request.png)
+![UPDATE BY ID RESPONSE](images/delete_user_response.png)
+
+### Link to postman methods documentation :point_down:
+* [Postman Documentation Methods](https://documenter.getpostman.com/view/17706643/Uz5ArJLE)
 
 # STILL WORKING ON IT.
