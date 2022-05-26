@@ -1,6 +1,39 @@
 const User = require("../models/users");
 const response = require("../utils/response");
 const { isValidObjectId } = require("../utils/validateObjectId");
+const { generaHash, compareHash } = require("../utils/hash");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+
+const loginUser = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      res.status(404).json({ WARNING: "EMAIL_DO_NOT_EXISTS" });
+      return;
+    }
+    const validPass = await compareHash(req.body.password, user.password);
+    if (!validPass) return res.status(403).json("INVALID_PASSWORD");
+
+    const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
+      expiresIn: "4m",
+    });
+
+    const refreshToken = jwt.sign(
+      { _id: user._id },
+      process.env.REFRESH_TOKEN_SECRET,
+      {
+        expiresIn: "12h",
+      }
+    );
+
+    res.cookie("RefreshToken", refreshToken);
+
+    return res.status(200).json(`ACCESS_TOKEN: ${accessToken}`);
+  } catch (error) {
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
+  }
+};
 
 const getAllUsers = async (req, res) => {
   try {
@@ -96,6 +129,7 @@ const getUserByName = async (req, res) => {
 };
 
 module.exports = {
+  loginUser,
   getAllUsers,
   getUserById,
   registerUser,
