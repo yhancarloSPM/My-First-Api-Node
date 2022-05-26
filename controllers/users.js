@@ -40,7 +40,7 @@ const getAllUsers = async (req, res) => {
     const users = await User.find();
     res.status(200).json(users);
   } catch (error) {
-    response.error(req, res, 500, "Internal Server Error", error);
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
 };
 
@@ -49,15 +49,15 @@ const getUserById = async (req, res) => {
     const { id } = req.params;
 
     if (!isValidObjectId(id))
-      response.badRequest(req, res, 400, `UserId: [${id}] is not valid`);
+      response.badRequest(req, res, 400, `USER_ID: [${id}] IS_NOT_VALID`);
     else {
       const oneUser = await User.findById(id);
       oneUser === null || oneUser.length === 0
-        ? response.notFound(req, res, 404, "User not found")
+        ? response.notFound(req, res, 404, "USER_NOT_FOUND")
         : res.status(200).json(oneUser);
     }
   } catch (error) {
-    response.error(req, res, 500, "Internal Server Error", error);
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
 };
 
@@ -81,9 +81,9 @@ const registerUser = async (req, res) => {
 
   try {
     await newUser.save();
-    response.success(req, res, 201, "User Created Successfull");
+    response.success(req, res, 201, "USER_ CREATED_ SUCCESSFULL");
   } catch (error) {
-    response.error(req, res, 500, "Internal Server Error", error);
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
 };
 
@@ -92,7 +92,7 @@ const updateUserById = async (req, res) => {
     const { id } = req.params;
 
     if (!isValidObjectId(id)) {
-      response.badRequest(req, res, 400, `UserId: [${id}] is not valid`);
+      response.badRequest(req, res, 400, `USER_ID: [${id}] IS_NOT_VALID`);
     } else {
       const { name, lastname, email, password } = req.body;
       const user = await User.findByIdAndUpdate(
@@ -102,11 +102,11 @@ const updateUserById = async (req, res) => {
       );
 
       !user
-        ? response.notFound(req, res, 404, "User not found")
-        : response.success(req, res, 200, "User was updated successfull");
+        ? response.notFound(req, res, 404, "USER_NOT_FOUND")
+        : response.success(req, res, 200, "USER_UPDATED_SUCCESSFULL");
     }
   } catch (error) {
-    response.error(req, res, 500, "Internal Server Error", error);
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
 };
 
@@ -114,15 +114,15 @@ const deleteUserById = async (req, res) => {
   try {
     const { id } = req.params;
     if (!isValidObjectId(id)) {
-      response.badRequest(req, res, 400, `UserId: [${id}] is not valid`);
+      response.badRequest(req, res, 400, `USER_ID: [${id}] IS_NOT_VALID`);
     } else {
       const user = await User.findByIdAndDelete(id);
       !user
-        ? response.notFound(req, res, 404, "User not found")
-        : response.success(req, res, 200, "User was deleted successfull");
+        ? response.notFound(req, res, 404, "USER_NOT_FOUND")
+        : response.success(req, res, 200, "USER_DELETED_SUCCESSFULL");
     }
   } catch (error) {
-    response.error(req, res, 500, "Internal Server Error", error);
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
 };
 
@@ -130,10 +130,10 @@ const getUserByName = async (req, res) => {
   try {
     const user = await User.find({ name: req.body.name });
     user.length === 0
-      ? response.notFound(req, res, 404, "User not found")
+      ? response.notFound(req, res, 404, "USER_NOT_FOUND")
       : res.status(200).json({ user });
   } catch (error) {
-    response.error(req, res, 500, "Internal Server Error", error);
+    response.error(req, res, 500, "INTERNAL_SERVER_ERROR", error);
   }
 };
 
